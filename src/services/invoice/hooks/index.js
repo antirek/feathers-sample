@@ -11,7 +11,7 @@ exports.before = {
     auth.restrictToAuthenticated()
   ],
   find: [
-    globalHooks.preFilterBySender()
+    auth.queryWithCurrentUser({idField: 'phone', as: 'from'}),
   ],
   get: [],
   create: [],
@@ -22,13 +22,9 @@ exports.before = {
 
 exports.after = {
   all: [
-    auth.verifyToken(),
     auth.populateUser(),
-    auth.restrictToAuthenticated()
   ],
-  find: [
-    //globalHooks.afterFilterBySender()
-  ],
+  find: [],
   get: [],
   create: [],
   update: [],
