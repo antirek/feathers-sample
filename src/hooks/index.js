@@ -20,3 +20,22 @@ exports.preFilterBySender = function (options) {
     };
 };
 
+exports.createInvoice = function (options) {
+    return function (hook) {
+        //hook.data.userId = hook.params.user.id;
+        const paymentService = hook.app.service('/payments');
+        
+        return paymentService.find({
+                id: hook.params.user.id
+            }).then(res => {
+                let payments = res.data.map(item => {
+                    return {type: item.type, account: item.account};
+                })
+                //console.log(payments);
+                //console.log(hook.data);
+                hook.data.data = payments;
+                //console.log(hook.data);
+                return hook;
+            });
+    };
+};

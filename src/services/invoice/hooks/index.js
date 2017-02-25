@@ -14,7 +14,9 @@ exports.before = {
     globalHooks.preFilterBySender()
   ],
   get: [],
-  create: [],
+  create: [
+    globalHooks.createInvoice()
+  ],
   update: [],
   patch: [],
   remove: []
@@ -22,7 +24,7 @@ exports.before = {
 
 exports.after = {
   all: [
-    auth.populateUser(),
+    //auth.populateUser(),
   ],
   find: [],
   get: [],
