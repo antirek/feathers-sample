@@ -4,6 +4,8 @@ const invoice = require('./invoice');
 const authentication = require('./authentication');
 const user = require('./user');
 const Sequelize = require('sequelize');
+const console = require('tracer').colorConsole();
+
 module.exports = function() {
   const app = this;
 

@@ -3,6 +3,9 @@
   "port": 3030,
   "mysql": "mysql://root:1234@localhost:3306/f2",
   "public": "../public/",
+  "smsru": {
+    "token": "b0446359-6ec9"
+  },
   "auth": {
     "idField": "id",
     "token": {

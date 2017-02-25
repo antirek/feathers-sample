@@ -3,6 +3,7 @@
 const globalHooks = require('../../../hooks');
 const hooks = require('feathers-hooks');
 const auth = require('feathers-authentication').hooks;
+const createPassword = require('./createPassword');
 
 exports.before = {
   all: [],
@@ -18,6 +19,8 @@ exports.before = {
     auth.restrictToOwner({ ownerField: 'id' })
   ],
   create: [
+    createPassword(),
+    globalHooks.sendSMS(),
     auth.hashPassword()
   ],
   update: [
