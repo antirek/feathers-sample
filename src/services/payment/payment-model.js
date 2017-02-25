@@ -1,6 +1,6 @@
 'use strict';
 
-// invoice-model.js - A sequelize model
+// payment-model.js - A sequelize model
 // 
 // See http://docs.sequelizejs.com/en/latest/docs/models-definition/
 // for more of what you can do here.
@@ -8,28 +8,28 @@
 const Sequelize = require('sequelize');
 
 module.exports = function(sequelize) {
-  const invoice = sequelize.define('invoices', {
-    amount: {
+  const payment = sequelize.define('payments', {
+    type: {
       type: Sequelize.STRING,
       allowNull: false
     },
-    from: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
-    to: {
+    account: {
       type: Sequelize.STRING,
       allowNull: false
     },
     data: {
-      type: Sequelize.JSON,
+      type: Sequelize.STRING,
+      allowNull: true
+    },
+    userId: {
+      type: Sequelize.INTEGER,
       allowNull: false
     }
   }, {
     freezeTableName: true
   });
 
-  invoice.sync();
+  payment.sync();
 
-  return invoice;
+  return payment;
 };

@@ -11,7 +11,6 @@ exports.before = {
     auth.restrictToAuthenticated()
   ],
   find: [
-    //auth.queryWithCurrentUser({idField: 'phone', as: 'from'}),
     globalHooks.preFilterBySender()
   ],
   get: [],
