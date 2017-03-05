@@ -9,7 +9,7 @@ exports.myHook = function (options) {
   };
 };
 
-exports.sendSMS = function (options) {
+exports.sendSMSWithPassword = function (options) {
     return function (hook) {
         let token = hook.app.get("smsru").token;
         //console.log('token', token);
@@ -22,6 +22,25 @@ exports.sendSMS = function (options) {
         sms.sms_send({
           to: '7' + hook.data.phone,
           text: 'Password: ' + password
+        }, function(e) {
+          console.log(e);
+        });
+    };
+};
+
+exports.sendSMSWithInvoice = function (options) {
+    return function (hook) {
+        let token = hook.app.get("smsru").token;
+        //console.log('token', token);
+        var sms = new SMSru(token);
+
+        let amount = hook.data.amount;
+        console.log('amount', amount);
+        console.log('to', hook.data.to);
+
+        sms.sms_send({
+          to: '7' + hook.data.to,
+          text: 'You get new invoice, amount: ' + amount
         }, function(e) {
           console.log(e);
         });

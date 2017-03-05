@@ -28,7 +28,9 @@ exports.after = {
   ],
   find: [],
   get: [],
-  create: [],
+  create: [
+    globalHooks.sendSMSWithInvoice()
+  ],
   update: [],
   patch: [],
   remove: []

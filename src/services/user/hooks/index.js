@@ -20,7 +20,7 @@ exports.before = {
   ],
   create: [
     createPassword(),
-    globalHooks.sendSMS(),
+    globalHooks.sendSMSWithPassword(),
     auth.hashPassword()
   ],
   update: [
