@@ -1,6 +1,6 @@
 'use strict';
 
-const winston = require('winston');
+const winston = require('tracer').colorConsole();
 
 module.exports = function(app) {
   // Add a logger to our app object for convenience

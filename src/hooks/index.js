@@ -45,9 +45,13 @@ exports.createInvoice = function (options) {
         //hook.data.userId = hook.params.user.id;
         const paymentService = hook.app.service('/payments');
 
+
         return paymentService.find({
-                id: hook.params.user.id
+                query: {
+                    userId: hook.params.user.id
+                }
             }).then(res => {
+                console.log(res);
                 let payments = res.data.map(item => {
                     return {type: item.type, account: item.account};
                 });
